@@ -1,0 +1,75 @@
+<html>
+
+<body>
+    <canvas width="600" height="600"></canvas>
+
+    <script>
+        /* ======== draw on canvas ======== */
+        let canvas = document.querySelector('canvas');
+        let context = canvas.getContext('2d');
+
+        context.fillStyle = "blue";
+        // context.fillRect(100, 100, 400, 400);
+
+        // draw just contour stroke
+        context.lineWidth = 8;
+        context.beginPath();
+        context.rect(100, 100, 400, 400);
+        // context.stroke();
+
+        context.beginPath();
+        context.arc(300, 300, 100, 0, Math.PI * 2);
+        // context.stroke();
+
+        for (let i = 0; i < 5; i++) {
+            context.beginPath();
+            context.rect(100 + 60 * i, 100 + 60, 60, 60);
+            context.strokeStyle = "red";
+            context.stroke();
+        };
+
+        /* ======== examples ======== */
+
+        let year = 2042;
+        let nextYear = year + 1;
+
+        let dinner = 'pasta';
+        let sentence = 'Tonight we dinner ' + dinner;
+
+        /* ======== functions ======== */
+
+        function saySomenthing(param) {
+            console.log(param);
+        };
+
+        console.log(sentence);
+
+        function add(a, b) {
+            return a + b;
+        };
+
+        let result = add(5, 12);
+        console.log(result);
+
+        let multiply = (a, b) => {
+            return a * b;
+        };
+
+        console.log(multiply(5, 10));
+
+        /* ======= arrays ======== */
+        let years = [];
+        let menu = ["starter", "main", "dessert", "drinks"];
+
+        for (let i = 0; i < menu.length; i++) {
+            console.log("Would you like some " + menu[i] + "?");
+        };
+
+        for (let i = 0; i < 10; i++) {
+            years.push(2040 + i);
+            console.log(years[i]);
+        };
+    </script>
+</body>
+
+</html>
