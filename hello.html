@@ -4,6 +4,9 @@
     <canvas width="600" height="600"></canvas>
 
     <script>
+        // time
+        let t = setInterval(loop, 1000);
+
         /* ======== draw on canvas ======== */
         let canvas = document.querySelector('canvas');
         let context = canvas.getContext('2d');
@@ -12,7 +15,7 @@
         // context.fillRect(100, 100, 400, 400);
 
         // draw just contour stroke
-        context.lineWidth = 4;
+        let lineWidth = context.lineWidth = Math.random();
         context.beginPath();
         context.rect(100, 100, 400, 400);
         // context.stroke();
@@ -21,29 +24,35 @@
         context.arc(300, 300, 100, 0, Math.PI * 2);
         // context.stroke();
 
-        for (let i = 0; i < 5; i++) {
-            // nested loop for multiple rows
-            for (let j = 0; j < 5; j++) {
-                context.lineWidth = 4 * i + 1; /* stroke width add 1 each iteration */
-                let width = 60;
-                let height = 60;
-                let gap = 30;
-                let x = 100 + (width + gap) * i;
-                let y = 100 + (height + gap) * j;
+        const width = 60;
+        const height = 60;
+        const gap = 30;
+        let x, y;
 
-                context.beginPath();
-                context.rect(x, y, width, height);
-                context.strokeStyle = "black";
-                context.stroke();
+        function loop() {
+            for (let i = 0; i < 5; i++) {
+                // nested loop for multiple rows
+                for (let j = 0; j < 5; j++) {
+                    context.lineWidth = 4 * i + 1; /* stroke width add 1 each iteration */
+                    let x = 100 + (width + gap) * i;
+                    let y = 100 + (height + gap) * j;
 
-                if (Math.random() > 0.5) {
+                    let lineWidth = context.lineWidth = Math.floor(Math.random() * 10 + i);
                     context.beginPath();
-                    context.rect(x + 10, y + 10, width - 20, height - 20);
-                    context.strokeStyle = "red";
+                    context.rect(x, y, width, height);
+                    context.strokeStyle = "black";
                     context.stroke();
+
+                    if (Math.random() > 0.5) {
+                        let lineWidth = context.lineWidth = Math.floor(Math.random() * 10 + i);
+                        context.beginPath();
+                        context.rect(x + 10, y + 10, width - 20, height - 20);
+                        context.strokeStyle = "red";
+                        context.stroke();
+                    };
                 };
+                // nested loop for multiple rows
             };
-            // nested loop for multiple rows
         };
 
         /* ======== examples ======== */
